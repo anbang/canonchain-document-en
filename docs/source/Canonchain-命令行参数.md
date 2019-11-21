@@ -1,4 +1,4 @@
-# 命令行参数
+# Command Line Interface
 
 ```
     $ canonchain --help
@@ -12,64 +12,63 @@
        1.0-stable
 
     COMMANDS:
-      --account_create             生成账户
-      --account_remove             移除账户
+      --account_create             Create new account
+      --account_remove             Remove account
         arguments：
-          --account                  账户
-      --account_import             导入账户
+          --account                  Account
+      --account_import             Imports account from json file
         arguments：
-          --file                     账户文件
-      --account_list               列出节点所有的账户
-      --daemon                     开启节点 
-      --help                       显示命令信息
-      --version                    显示版本信息
+          --file                     Account file
+      --account_list               List all accounts
+      --daemon                     Start node daemon 
+      --help                       Print parameter options
+      --version                    Print version
 
     NODE OPTIONS:
-      --network                    网络（默认：1 表示主网地址）
-      --data_path                  节点数据目录
-      --io_threads                 IO线程数       
-      --bg_threads                 后台线程数
-      --sync_threads               同步线程数
+      --network                    Network id（Default：1 - mainnet）
+      --data_path                  Use the supplied path as the data directory
+      --io_threads                 Number of io threads       
+      --bg_threads                 Number of background threads
+      --sync_threads               Number of syncing threads
 
     RPC OPTIONS:
-      --rpc                        开启HTTP-RPC服务
-      --rpc_addr                   HTTP-RPC服务监听地址 (默认: 127.0.0.1)
-      --rpc_port                   HTTP-RPC服务监听端口 (默认: 8765)
-      --rpc_control                开启HTTP-RPC写入权限
+      --rpc                        Enable the HTTP-RPC server
+      --rpc_addr                   HTTP-RPC server listening interface (default: 127.0.0.1)
+      --rpc_port                   HTTP-RPC server listening port (default: 8765)
+      --rpc_control                Enable the HTTP-RPC write permission
 
     WS OPTIONS:
-      --ws                         开启WebSocket服务  
-      --ws_addr                    WebSocket服务监听地址 (默认: 127.0.0.1)
-      --ws_port                    WebSocket服务监听端口 (默认: 8764)
-      --ws_control                 开启WebSocket写入权限
+      --ws                         Enable the WS-RPC server  
+      --ws_addr                    WS-RPC server listening interface (default: 127.0.0.1)
+      --ws_port                    WS-RPC server listening port (default: 8764)
+      --ws_control                 Enable the WS-RPC write permission
 
     LOG OPTIONS:
-      --console                    日志输出到控制台
-      --max_size                   日志最大容量  
-      --rotation_size              日志文件超过此设置建立新文件 
-      --flush                      写入每条日志时刷新控制台日志和日志文件    
-      --verbosity                  日志级别: none,error,warning,info,debug,trace (默认: info)
-      --vmodule                    模块日志级别:  p2p=info,node=debug 逗号分隔符 (所有模块列表:node,p2p,rpc,db,sync)  
+      --console                    Enable output log to console
+      --max_size                   The maximum total size of rotated files 
+      --rotation_size              The size of the file at which rotation should occur
+      --flush                      Automatically flush the file after each written record    
+      --verbosity                  Logging verbosity: none,error,warning,info,debug,trace (default: info)
+      --vmodule                    Per-module verbosity: comma-separated list of <module>=<level>（current module list: node,p2p,rpc,db,sync)  
            
     P2P OPTIONS:
-      --host                       P2P监听地址 (默认: 127.0.0.1)
-      --port                       P2P监听端口 (默认: 30606) 
-      --max_peers                  最大Peer数 (默认: 25)  
-      --bootstrap_nodes            引导节点 
-      --exemption_nodes            豁免惩罚节点 
-      --nat                        开启NAT穿透
+      --addr                       Network listening interface (default: 127.0.0.1)
+      --port                       Network listening port (default: 30606)
+      --max_peers                  Maximum number of network peers (network disabled if set to 0) (default: 25)
+      --bootstrap_nodes            Comma separated enode URLs for P2P discovery bootstrap
+      --exemption_nodes            Comma separated enode URLs for P2P exemption node
+      --nat                        NAT penetration
 
     WITNESS OPTIONS:               
-      --witness                    开启见证人模式       
-      --witness_account            见证人账户或者账户文件//账户:czr_3MnXfV9hbmxVPdgfrPqgUiH6N7VbkSEhn5VqBCzBcxzTzkEUxU 或账户文件:F:/czr_latest/test/czr_3MnXfV9hbmxVPdgfrPqgUiH6N7VbkSEhn5VqBCzBcxzTzkEUxU.json
-      --password                   见证人账户密码  
-      --last_block                 用于防止双花，设置当前见证人的最后一笔见证交易的hash, 节点在获得此block后才开始见证
-
+      --witness                    Enable witness mode      
+      --witness_account            Witness account address or account json file
+      --password                   Witness account password  
+      --last_block                 The last block hash for the witness to sync. The witness starts to work if and only if the node receives the last block. 
     MISC OPTIONS:               
-      --config                     指定配置文件，配置文件必须存在       
+      --config                     Config file       
 ```
-### 配置文件  
-config.json - 位于节点数据目录下，示例如下：
+### Config file
+config.json - in the node data path. An examples as the following:
 ```
     {
         "version": 3,
